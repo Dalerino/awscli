@@ -39,6 +39,6 @@ aws ec2 authorize-security-group-ingress --group-id $sg_id --protocol tcp --port
 
 aws ec2 authorize-security-group-ingress --group-id $sg_id --protocol tcp --port 443 --cidr 0.0.0.0/0 --region $region
 
-aws ec2 run-instances --image-id $image_id --instance-type t2.micro --key-name Proceed without key pair --security-group-ids $sg_id --subnet-id ("$subnet1_id" "$subnet2_id" "$subnet3_id") --tag specifications 'ResourceType-instance,Tags=[{Key=Name,Value=ec2-group-4}]' 
+aws ec2 run-instances --image-id $image_id --instance-type t2.micro --key-name Proceed without key pair --security-group-ids $sg_id --subnet-id ("$subnet1_id" "$subnet2_id" "$subnet3_id") --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=ec2-group-4}]' 
 
 
