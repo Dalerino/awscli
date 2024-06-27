@@ -10,7 +10,7 @@ subnet2_id="10.0.2.0/24"
 
 subnet3_id="10.0.3.0/24"
 
-image_id="ami-07d7e3e669718ab45"
+image_id="ami-024ebc7de0fc64e44"
 
 vpc_id=$(aws ec2 create-vpc --cidr-block $vpc_cidr --region $region --query Vpc.VpcId --output text)
 
@@ -39,6 +39,6 @@ aws ec2 authorize-security-group-ingress --group-id $sg_id --protocol tcp --port
 
 aws ec2 authorize-security-group-ingress --group-id $sg_id --protocol tcp --port 443 --cidr 0.0.0.0/0 --region $region
 
-aws ec2 run-instances --image-id $image_id --instance-type t2.micro --key-name Proceed without key pair --security-group-ids $sg_id --subnet-id ("$subnet1_id" "$subnet2_id" "$subnet3_id") --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=ec2-group-4}]' 
+aws ec2 run-instances --image-id $image_id --instance-type t2.micro --key-name my-laptop-key --security-group-ids $sg_id --subnet-id $subnet1_id --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=ec2-group-3}]' 
 
 
